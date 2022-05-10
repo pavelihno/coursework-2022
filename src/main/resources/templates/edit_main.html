@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{base :: head}"></div>
+<body>
+<div th:replace="~{base :: header}"></div>
+<div class="container">
+    <h2>Профиль</h2>
+    <div class="info">
+        <div>
+            <h4>Редактирование основной информации</h4>
+            <form class="form" method="post" th:action="@{/profile/edit_main}" th:object="${user}">
+                <div class="form-field">
+                    <span>Фамилия</span>
+                    <input required id="lastName" name="lastName" type="text" th:value="${user.getLastName()}">
+                </div>
+                <div class="form-field">
+                    <span>Имя</span>
+                    <input required id="firstName" name="firstName" type="text" th:value="${user.getFirstName()}">
+                </div>
+                <div class="form-field">
+                    <span>Телефон</span>
+                    <input required id="phone" name="phone" type="tel" th:value="${user.getPhone()}">
+                </div>
+                <div class="form-field">
+                    <span>Почта</span>
+                    <input required id="email" name="email" type="email" th:value="${user.getEmail()}">
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit">Изменить</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+<script th:replace="~{base :: script}"></script>
+</body>
+</html>

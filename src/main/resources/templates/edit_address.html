@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{base :: head}"></div>
+<body>
+<div th:replace="~{base :: header}"></div>
+<div class="container">
+    <h2>Профиль</h2>
+    <div class="info">
+        <div>
+            <h4>Редактирование адреса доставки</h4>
+            <form class="form" method="post" th:action="@{/profile/edit_address}" th:object="${address}">
+                <div class="form-field">
+                    <span>Город</span>
+                    <input required id="city" name="city" type="text" th:value="${address.getCity()}">
+                </div>
+                <div class="form-field">
+                    <span>Улица</span>
+                    <input required id="street" name="street" type="text" th:value="${address.getStreet()}">
+                </div>
+                <div class="form-field">
+                    <span>Дом</span>
+                    <input required id="buildingNumber" name="buildingNumber" type="text" th:value="${address.getBuildingNumber()}">
+                </div>
+                <div class="form-field">
+                    <span>Квартира</span>
+                    <input id="apartmentNumber" name="apartmentNumber" type="text" th:value="${address.getApartmentNumber()}">
+                </div>
+                <div class="form-field">
+                    <span>Комментарий</span>
+                    <input id="comment" name="comment" type="text" th:value="${address.getComment()}">
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit">Изменить</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:replace="~{base :: script}"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{base :: head}"></div>
+<body>
+<div th:replace="~{base :: header}"></div>
+<div class="container">
+    <h2>Создание заказа</h2>
+
+    <div class="create-order-block">
+        <div class="products">
+            <div class="product" th:each="product : ${products}" th:fragment="products">
+                <div class="product-description">
+                    <span class="font-weight-bold" th:text="${product.getName()}"></span>
+                    <u><span th:text="${product.getPrice()}"></span> рублей</u>
+                    <span class="lead" th:text="${product.getDescription()}"></span>
+                    <a class="add-order btn btn-secondary btn-sm" style="color: white;" th:data-id="${product.getId()}" th:data-price="${product.getPrice()}" th:data-name="${product.getName()}">Добавить</a>
+                </div>
+            </div>
+        </div>
+
+        <form id="create-order-form" method="post" th:action="@{/orders}" th:object="${orderDTO}">
+            <div class="form-field">
+                <label class="form-check-label" for="withDelivery">Доставка (<span id="delivery-price" th:text="${@environment.getProperty('delivery.price')}"></span> рублей)</label>
+                <input class="form-check-input" id="withDelivery" name="withDelivery" th:checked="*{withDelivery}" type="checkbox">
+            </div>
+            <ul class="list-group" id="added-products">
+                <li th:each="product, iter : ${checkedProducts}" class="collection-product list-group-item" th:data-index="${iter.index}" th:data-price="${product.getPrice()}" th:data-id="${product.getId()}">
+                    <span class="font-weight-bold" th:text="${product.getName()}"></span>
+                    <u><span th:text="${product.getPrice()}"></span> рублей</u>
+                    <button class="btn btn-danger btn-sm">Удалить</button>
+                </li>
+            </ul>
+
+            <span class="font-weight-bold"><u>Сумма заказа:</u> <span id="order-price">0</span> рублей</span>
+            <input hidden th:each="product,iter : ${checkedProducts}" type="text" th:data-index="${iter.index}" class="product-item" name="productsIds[]" field="productsIds[]" th:value="${product.getId()}">
+            <button class="btn btn-primary" type="submit">Создать</button>
+        </form>
+
+    </div>
+</div>
+<script th:replace="~{base :: script}"></script>
+</body>
+</html>
+
+

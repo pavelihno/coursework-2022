@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{base :: head}"></div>
+<body>
+<div th:replace="~{base :: header}"></div>
+<div class="container">
+    <h2>Профиль</h2>
+    <div class="info">
+        <div>
+            <h4>Пополнение баланса</h4>
+            <form class="form" method="post" th:action="@{/profile/deposit}" th:object="${user}">
+                <div class="form-field">
+                    <span>Сумма</span>
+                    <input required id="balance" name="balance" type="number" th:value="0">
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit">Пополнить</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:replace="~{base :: script}"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<div th:replace="~{base :: head}"></div>
+<body>
+<div th:replace="~{base :: header}"></div>
+<div class="container">
+    <h2>Профиль</h2>
+    <div class="info">
+        <div class="main-info">
+            <h4>Основная информация</h4>
+            <span><a th:href="@{/profile/edit_main}" style="color: black !important;">Изменить</a></span>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><p class="font-weight-bold">Фамилия:</p> <span th:text="${user.getLastName()}"></span></li>
+                <li class="list-group-item"><p class="font-weight-bold">Имя:</p> <span th:text="${user.getFirstName()}"></span></li>
+                <li class="list-group-item"><p class="font-weight-bold">Телефон:</p> <span th:text="${user.getPhone()}"></span></li>
+                <li class="list-group-item"><p class="font-weight-bold">Почта:</p> <span th:text="${user.getEmail()}"></span></li>
+                <li class="list-group-item">
+                    <p class="font-weight-bold">Баланс: <span th:text="${#authentication.getPrincipal().getBalance()}"></span> рублей</p>
+                    <a class="btn btn-primary" th:href="@{/profile/deposit}">Пополнить</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="address-info">
+            <h4>Адрес доставки</h4>
+            <span><a th:href="@{/profile/edit_address}" style="color: black !important;">Изменить</a></span>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><p class="font-weight-bold">Город:</p> <span th:text="${address.getCity()}"></span></li>
+                <li class="list-group-item"><p class="font-weight-bold">Улица:</p> <span th:text="${address.getStreet()}"></span></li>
+                <li class="list-group-item"><p class="font-weight-bold">Дом:</p> <span th:text="${address.getBuildingNumber()}"></span></li>
+                <li class="list-group-item"><p class="font-weight-bold">Квартира:</p> <span th:text="${address.getApartmentNumber()}"></span></li>
+                <li class="list-group-item"><p class="font-weight-bold">Комментарий:</p> <span th:text="${address.getComment()}"></span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div sec:authorize="isAnonymous()">
+        <a th:href="@{/login}">Войдите в аккаунт</a>
+    </div>
+</div>
+<script th:replace="~{base :: script}"></script>
+</body>
+</html>

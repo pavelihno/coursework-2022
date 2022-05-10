@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{base :: head}"></div>
+<body>
+<div th:replace="~{base :: header}"></div>
+<div class="container">
+    <div>
+        <span>Зарегистрироваться</span>
+        <span><a th:href="@{/login}">Войти</a></span>
+    </div>
+
+    <form class="form" th:action="@{/signup}" method="post" th:object="${user}">
+        <div class="form-field">
+            <span>Логин</span>
+            <input required id="username" type="text" th:field="*{username}">
+        </div>
+        <div class="form-field">
+            <span>Пароль</span>
+            <input required id="password" type="password" th:field="*{password}">
+        </div>
+        <div class="form-field">
+            <span>Имя</span>
+            <input required id="firstName" type="text" th:field="*{firstName}">
+        </div>
+        <div class="form-field">
+            <span>Фамилия</span>
+            <input required id="lastName" type="text" th:field="*{lastName}">
+        </div>
+        <div class="form-field">
+            <span>Почта</span>
+            <input required id="email" type="email" th:field="*{email}">
+        </div>
+        <div class="form-field">
+            <span>Телефон</span>
+            <input required id="phone" type="tel" th:field="*{phone}">
+        </div>
+        <div class="form-field">
+            <span>Город</span>
+            <input required id="address[city]" type="text" th:field="*{address.city}">
+        </div>
+        <div class="form-field">
+            <span>Улица</span>
+            <input required id="address[street]" type="text" th:field="*{address.street}">
+        </div>
+        <div class="form-field">
+            <span>Дом</span>
+            <input required id="address[buildingNumber]" type="text" th:field="*{address.buildingNumber}">
+        </div>
+        <div class="form-field">
+            <span>Квартира</span>
+            <input id="address[apartmentNumber]" type="text" th:field="*{address.apartmentNumber}">
+        </div>
+        <div class="form-field">
+            <span>Комментарий</span>
+            <input id="address[comment]" type="text" th:field="*{address.comment}">
+        </div>
+        <button class="btn btn-primary btn-sm" type="submit">Зарегистрироваться</button>
+    </form>
+</div>
+<script th:replace="~{base :: script}"></script>
+</body>

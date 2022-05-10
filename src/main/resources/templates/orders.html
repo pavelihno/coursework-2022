@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{base :: head}"></div>
+<body>
+<div th:replace="~{base :: header}"></div>
+<div class="container">
+    <h2>Заказы</h2>
+
+    <a class="btn btn-light btn-sm" th:href="@{/create_order}">Создать заказ</a>
+
+    <h4 th:if="${orders.size() == 0}">Нет заказов</h4>
+
+    <div class="order-block" th:each="order : ${orders}">
+        <div class="order-info font-weight-bold">
+            <span th:text="${order.getDateCreation()}"></span>
+            <span><span th:text="${order.getPrice()}"></span> рублей</span>
+            <span th:if="${order.getWithDelivery()}">Доставка</span>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="order list-group-item" th:each="product : ${order.getProducts()}">
+                <u><span th:text="${product.getName()}"></span></u>
+                <span><span th:text="${product.getPrice()}"></span> рублей</span>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+<script th:replace="~{base :: script}"></script>
+</body>
+</html>

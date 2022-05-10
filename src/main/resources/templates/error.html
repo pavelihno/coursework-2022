@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<div th:replace="~{base :: head}"></div>
+<body>
+<div th:replace="~{base :: header}"></div>
+<div class="container">
+    <div th:if="${errorTitle}">
+        <span th:text="${errorTitle}"></span>
+        <p th:text="${errorMessage}" th:if="${errorMessage}"></p>
+    </div>
+    <div th:unless="${errorTitle}">
+        <p>Произошла ошибка</p>
+    </div>
+    <div>
+        <a th:href="@{/home}" sec:authorize="isAuthenticated()">На главную</a>
+        <a th:href="@{/login}" sec:authorize="isAnonymous()">Войти в аккаунт</a>
+    </div>
+</div>
+<script th:replace="~{base :: script}"></script>
+</body>
+</html>
