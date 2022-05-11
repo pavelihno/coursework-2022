@@ -25,14 +25,6 @@ public class ProfileService {
         currentUser.setBalance(updatedUser.getBalance() + currentUser.getBalance());
         userRepo.save(currentUser);
     }
-    public void decreaseBalance(UserEntity currentUser, int money) {
-        currentUser.setBalance(currentUser.getBalance() - money);
-        userRepo.save(currentUser);
-    }
-    public void increaseBalance(UserEntity user, int money) {
-        user.setBalance(user.getBalance() + money);
-        userRepo.save(user);
-    }
     public void editAddress(UserEntity currentUser, AddressEntity address) {
         AddressEntity newAddress = currentUser.getAddress();
         newAddress.setCity(address.getCity());

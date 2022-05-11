@@ -62,10 +62,6 @@ public class OrderService {
         order.setPrice(price);
         order.setWithDelivery(withDelivery);
 
-//        for (ProductEntity product: order.getProducts()) {
-//            productRepo.save(product)
-//        }
-
         orderRepo.save(order);
         userRepo.save(user);
 

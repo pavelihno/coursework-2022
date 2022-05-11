@@ -17,12 +17,6 @@
         <a class="header-link" th:href="@{/logout}">Выйти</a>
     </div>
 </header>
-<div th:fragment="toast(message)">
-    <div th:if="${message}" class="toast">
-        <button class="toast-close">x</button>
-        <p th:text="${message}"></p>
-    </div>
-</div>
 <div th:fragment="script">
     <script th:src="@{/scripts/main.js}"></script>
 </div>

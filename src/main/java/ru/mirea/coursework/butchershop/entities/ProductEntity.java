@@ -26,9 +26,4 @@ public class ProductEntity {
 
     @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY)
     private Set<OrderEntity> orders = new HashSet<>();
-
-    public void addOrder(OrderEntity order) {
-        this.orders.add(order);
-    }
-
 }

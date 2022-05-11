@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.mirea.coursework.butchershop.entities.UserEntity;
-import ru.mirea.coursework.butchershop.repos.AddressRepo;
 import ru.mirea.coursework.butchershop.services.UserService;
 
 @Controller
@@ -16,8 +15,6 @@ public class MainController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private AddressRepo addressRepo;
 
     @GetMapping(value = {"/", "/index", "/home"})
     public String index(Model model, @AuthenticationPrincipal UserEntity user) {
@@ -45,8 +42,4 @@ public class MainController {
             return "redirect:/error";
         }
     }
-    
-    
-
-
 }

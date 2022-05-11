@@ -11,7 +11,6 @@ import java.util.UUID;
 
 @Service
 public class ProductService {
-
     @Autowired
     private ProductRepo productRepo;
 
@@ -34,5 +33,4 @@ public class ProductService {
         productRepo.save(product);
         return product;
     }
-
 }

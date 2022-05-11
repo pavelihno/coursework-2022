@@ -65,5 +65,4 @@ public class ProductController {
 
         return ResponseEntity.ok("New objects created");
     }
-
 }

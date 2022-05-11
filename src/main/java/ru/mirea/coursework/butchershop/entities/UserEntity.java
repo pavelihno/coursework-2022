@@ -3,8 +3,6 @@ package ru.mirea.coursework.butchershop.entities;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -81,5 +79,4 @@ public class UserEntity implements UserDetails {
         this.address = address;
         address.setUser(this);
     }
-
 }

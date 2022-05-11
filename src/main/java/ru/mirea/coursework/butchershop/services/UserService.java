@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import ru.mirea.coursework.butchershop.entities.RoleEntity;
 import ru.mirea.coursework.butchershop.entities.UserEntity;
 import ru.mirea.coursework.butchershop.repos.AddressRepo;
-import ru.mirea.coursework.butchershop.repos.RoleRepo;
 import ru.mirea.coursework.butchershop.repos.UserRepo;
 
 import java.util.Arrays;
@@ -19,8 +18,6 @@ import java.util.List;
 public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
-    @Autowired
-    private RoleRepo roleRepo;
     @Autowired
     private AddressRepo addressRepo;
     @Autowired
@@ -32,9 +29,6 @@ public class UserService implements UserDetailsService {
 
     public List<UserEntity> getAll() {
         return userRepo.findAll();
-    }
-    public List<UserEntity> filterByFields(UserEntity userFields) {
-        return userRepo.filterByFields(userFields);
     }
 
     public UserEntity addUser(UserEntity user) throws Exception {
